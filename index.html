@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SharkVøid</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/8ee2deae-d5b1-441f-bb51-4953009aeade.jpg" type="image/jpeg">
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Podstawowe style */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: white;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #ff0000;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeIn 1s 0.5s forwards;
+    }
+
+    .button {
+      background-color: #ff0000;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #d40000;
+    }
+
+    /* Style dla sekcji projektów */
+    .projects {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .projects h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .projects .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    .projects .card {
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .projects .card .mockup {
+      background-color: #333;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+    }
+
+    /* Sekcja O SharkVøid */
+    .about {
+      background-color: #262626;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .about p {
+      color: #ccc;
+      font-size: 1.125rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Sekcja Kontakt */
+    .contact {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact p {
+      font-size: 1.125rem;
+      color: #ccc;
+    }
+
+    /* Stopka */
+    footer {
+      background-color: #1c1c1c;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #777;
+    }
+
+    /* Animacje */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>SharkVøid</h1>
+    <p>Blood in the water. Silence in the Void.</p>
+    <button class="button">Zobacz projekty</button>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects">
+    <h2>Projekty</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="mockup">
+          <span>Mockup 1</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="mockup">
+          <span>Mockup 2</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="mockup">
+          <span>Mockup 3</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>O SharkVøid</h2>
+    <p>SharkVøid to przestrzeń dla mrocznych wizji. To nie tylko koszulki — to styl życia dla tych, którzy czują pustkę i słyszą echo z głębin. Projektujemy z pasją, w cieniu rekiniego płetwy.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Kontakt</h2>
+    <p>Mail: sharkvoid@voidmail.com</p>
+    <p>Instagram: @sharkvoid.official</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 SharkVøid. Wszystkie prawa zastrzeżone.
+  </footer>
+</body>
+</html>
