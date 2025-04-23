@@ -10,7 +10,6 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Podstawowe style */
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -52,13 +51,14 @@
       border: none;
       cursor: pointer;
       transition: background-color 0.3s;
+      text-decoration: none;
+      font-size: 1rem;
     }
 
     .button:hover {
       background-color: #d40000;
     }
 
-    /* Style dla sekcji projektów */
     .projects {
       padding: 50px 20px;
       text-align: center;
@@ -92,7 +92,6 @@
       color: #777;
     }
 
-    /* Sekcja O SharkVøid */
     .about {
       background-color: #262626;
       padding: 50px 20px;
@@ -106,7 +105,6 @@
       margin: 0 auto;
     }
 
-    /* Sekcja Kontakt */
     .contact {
       padding: 50px 20px;
       text-align: center;
@@ -117,7 +115,6 @@
       color: #ccc;
     }
 
-    /* Stopka */
     footer {
       background-color: #1c1c1c;
       padding: 30px 20px;
@@ -126,7 +123,6 @@
       color: #777;
     }
 
-    /* Animacje */
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -146,7 +142,7 @@
   <section class="hero">
     <h1>SharkVøid</h1>
     <p>Blood in the water. Silence in the Void.</p>
-    <button class="button">Zobacz projekty</button>
+    <a href="projekty.html" class="button">Zobacz projekty</a>
   </section>
 
   <!-- Projects Section -->
@@ -180,7 +176,7 @@
   <!-- Contact Section -->
   <section class="contact">
     <h2>Kontakt</h2>
-    <p>Mail: sharkvoid@gmail.com</p>
+    <p>Mail: sharkvoid@gmail.com</p> 
     <p>Instagram: @sharkvoid.official</p>
   </section>
 
