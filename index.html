@@ -4,10 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SharkVøid</title>
-
-  <!-- Favicon -->
-  <link rel="icon" href="images/8ee2deae-d5b1-441f-bb51-4953009aeade.jpg" type="image/jpeg">
-
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     /* Podstawowe style */
@@ -17,6 +13,7 @@
       padding: 0;
       background-color: black;
       color: white;
+      scroll-behavior: smooth;
     }
 
     .hero {
@@ -70,26 +67,63 @@
       margin-bottom: 40px;
     }
 
-    .projects .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 30px;
+    /* Układ karuzeli z obrazami w 3 kolumnach */
+    .carousel-container {
+      display: flex;
+      justify-content: center; /* Wyrównanie na środku */
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      justify-items: center;
     }
 
-    .projects .card {
+    .carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Trzy kolumny */
+      gap: 20px;
+      position: relative;
+      max-width: 1000px;
+      justify-items: center; /* Wyrównanie zawartości w każdej kolumnie */
+    }
+
+    /* Nowe style dla kwadratowych obrazów */
+    .carousel .card {
       background-color: #1c1c1c;
+      width: 300px;  /* Szerokość */
+      height: 300px; /* Wysokość, aby stworzyć kwadrat */
       padding: 20px;
       border-radius: 10px;
       text-align: center;
+      position: relative;
     }
 
-    .projects .card .mockup {
+    .carousel .mockup {
       background-color: #333;
-      height: 200px;
+      height: 100%;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #777;
+    }
+
+    /* Strzałki do przewijania */
+    .carousel .carousel-buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel .carousel-buttons button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px;
     }
 
     /* Sekcja O SharkVøid */
@@ -100,7 +134,7 @@
     }
 
     .about p {
-      color: #ccc;
+      color: white;
       font-size: 1.125rem;
       max-width: 800px;
       margin: 0 auto;
@@ -114,7 +148,7 @@
 
     .contact p {
       font-size: 1.125rem;
-      color: #ccc;
+      color: white;
     }
 
     /* Stopka */
@@ -146,26 +180,58 @@
   <section class="hero">
     <h1>SharkVøid</h1>
     <p>Blood in the water. Silence in the Void.</p>
-    <button class="button" onclick="window.location.href='index.html'">Zobacz projekty</button>
+    <button class="button" id="scrollToProjectsBtn">Zobacz projekty</button>
   </section>
 
   <!-- Projects Section -->
-  <section class="projects">
+  <section class="projects" id="projects">
     <h2>Projekty</h2>
-    <div class="grid">
-      <div class="card">
-        <div class="mockup">
-          <span>Mockup 1</span>
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 1</span>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="mockup">
-          <span>Mockup 2</span>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 2</span>
+          </div>
         </div>
-      </div>
-      <div class="card">
-        <div class="mockup">
-          <span>Mockup 3</span>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 3</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 4</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 5</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 6</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 7</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 8</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="mockup">
+            <span>Mockup 9</span>
+          </div>
         </div>
       </div>
     </div>
@@ -180,7 +246,7 @@
   <!-- Contact Section -->
   <section class="contact">
     <h2>Kontakt</h2>
-    <p>Mail: sharkvoid@gmail.com</p> 
+    <p>Mail: sharkvoid@gmail.com</p>
     <p>Instagram: @sharkvoid.official</p>
   </section>
 
@@ -188,6 +254,14 @@
   <footer>
     © 2025 SharkVøid. Wszystkie prawa zastrzeżone.
   </footer>
+
+  <script>
+    // Funkcja przewijania do sekcji 'projekty' po kliknięciu przycisku
+    document.getElementById('scrollToProjectsBtn').addEventListener('click', function() {
+      document.getElementById('projects').scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 </html>
-
