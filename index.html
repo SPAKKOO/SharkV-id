@@ -1,267 +1,191 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SharkVøid</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhantomZone - Najlepszy serwer Phasmophobia</title>
   <style>
-    /* Podstawowe style */
     body {
-      font-family: 'Roboto', sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: black;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1c1c1c, #444, #e0e0e0);
       color: white;
-      scroll-behavior: smooth;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 80px 20px;
+      padding: 100px 20px;
+      flex: 1;
     }
 
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      opacity: 0;
-      transform: translateY(-20px);
-      animation: fadeInUp 1s forwards;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: #ff0000;
-      margin-bottom: 30px;
-      opacity: 0;
-      animation: fadeIn 1s 0.5s forwards;
-    }
-
-    .button {
-      background-color: #ff0000;
-      color: white;
-      padding: 15px 25px;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #d40000;
-    }
-
-    /* Style dla sekcji projektów */
-    .projects {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .projects h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 40px;
-    }
-
-    /* Układ karuzeli z obrazami w 3 kolumnach */
-    .carousel-container {
-      display: flex;
-      justify-content: center; /* Wyrównanie na środku */
-      flex-wrap: wrap;
-      gap: 20px;
+    .join-btn {
+      display: inline-block;
       margin-top: 30px;
-      justify-items: center;
+      padding: 15px 30px;
+      background-color: #5865F2;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
     }
 
-    .carousel {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* Trzy kolumny */
-      gap: 20px;
-      position: relative;
-      max-width: 1000px;
-      justify-items: center; /* Wyrównanie zawartości w każdej kolumnie */
+    .join-btn:hover {
+      background-color: #404eed;
     }
 
-    /* Nowe style dla kwadratowych obrazów */
-    .carousel .card {
-      background-color: #1c1c1c;
-      width: 300px;  /* Szerokość */
-      height: 300px; /* Wysokość, aby stworzyć kwadrat */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #aaa;
+    }
+
+    /* Hamburger Menu */
+    .menu-icon {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    .menu-icon div {
+      width: 30px;
+      height: 5px;
+      background-color: white;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color: #444;
       padding: 20px;
       border-radius: 10px;
-      text-align: center;
-      position: relative;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
     }
 
-    .carousel .mockup {
-      background-color: #333;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
-    }
-
-    /* Strzałki do przewijania */
-    .carousel .carousel-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-    }
-
-    .carousel .carousel-buttons button {
-      background-color: transparent;
-      border: none;
+    .nav-menu a {
+      text-decoration: none;
       color: white;
-      font-size: 2rem;
-      cursor: pointer;
+      margin: 10px 0;
       padding: 10px;
-    }
-
-    /* Sekcja O SharkVøid */
-    .about {
-      background-color: #262626;
-      padding: 50px 20px;
+      background-color: #5865F2;
+      border-radius: 5px;
       text-align: center;
+      transition: background 0.3s;
     }
 
-    .about p {
-      color: white;
-      font-size: 1.125rem;
-      max-width: 800px;
-      margin: 0 auto;
+    .nav-menu a:hover {
+      background-color: #404eed;
     }
 
-    /* Sekcja Kontakt */
-    .contact {
-      padding: 50px 20px;
-      text-align: center;
+    /* Menu Toggle */
+    .menu-icon.active div:nth-child(1) {
+      transform: rotate(45deg);
+      transform-origin: 5px 5px;
     }
 
-    .contact p {
-      font-size: 1.125rem;
-      color: white;
+    .menu-icon.active div:nth-child(2) {
+      opacity: 0;
     }
 
-    /* Stopka */
-    footer {
-      background-color: #1c1c1c;
-      padding: 30px 20px;
-      text-align: center;
-      font-size: 0.875rem;
-      color: #777;
+    .menu-icon.active div:nth-child(3) {
+      transform: rotate(-45deg);
+      transform-origin: 5px 5px;
     }
 
-    /* Animacje */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .nav-menu.active {
+      display: flex;
     }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
+    /* Content sections */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
     }
   </style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>SharkVøid</h1>
-    <p>Blood in the water. Silence in the Void.</p>
-    <button class="button" id="scrollToProjectsBtn">Zobacz projekty</button>
-  </section>
+  <!-- Hamburger Menu Icon -->
+  <div class="menu-icon" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-  <!-- Projects Section -->
-  <section class="projects" id="projects">
-    <h2>Projekty</h2>
-    <div class="carousel-container">
-      <div class="carousel">
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 1</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 2</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 3</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 4</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 5</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 6</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 7</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 8</span>
-          </div>
-        </div>
-        <div class="card">
-          <div class="mockup">
-            <span>Mockup 9</span>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Navigation Menu -->
+  <div class="nav-menu">
+    <a href="#" onclick="showSection('main')">Strona główna</a>
+    <a href="#" onclick="showSection('about')">O nas</a>
+    <a href="#" onclick="showSection('projects')">Projekty</a>
+    <a href="#" onclick="showSection('contact')">Kontakt</a>
+    <a href="https://discord.gg/Yn4wrnSSXp" target="_blank">Dołącz do Discorda</a>
+  </div>
+
+  <!-- Main Section (Home Page) -->
+  <section id="main" class="section active hero">
+    <h1>👻 PhantomZone</h1>
+    <p>Najlepszy serwer Discord dla fanów Phasmophobii</p>
+    <a href="https://discord.gg/Yn4wrnSSXp" target="_blank" class="join-btn">Dołącz do PhantomZone!</a>
   </section>
 
   <!-- About Section -->
-  <section class="about">
-    <h2>O SharkVøid</h2>
-    <p>SharkVøid to przestrzeń dla mrocznych wizji. To nie tylko koszulki — to styl życia dla tych, którzy czują pustkę i słyszą echo z głębin. Projektujemy z pasją, w cieniu rekiniego płetwy.</p>
+  <section id="about" class="section">
+    <h2>O nas</h2>
+    <p>PhantomZone to społeczność pasjonatów gry Phasmophobia. Dołącz do nas i wspólnie z nami walcz z duchami!</p>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2>Projekty</h2>
+    <p>Nasze projekty obejmują różnorodne aktywności związane z Phasmophobią, w tym fanowskie mody, streamy, i więcej!</p>
   </section>
 
   <!-- Contact Section -->
-  <section class="contact">
+  <section id="contact" class="section">
     <h2>Kontakt</h2>
-    <p>Mail: sharkvoid@gmail.com</p>
-    <p>Instagram: @sharkvoid.official</p>
+    <p>Masz pytania? Skontaktuj się z nami poprzez Discord.</p>
   </section>
 
   <!-- Footer -->
   <footer>
-    © 2025 SharkVøid. Wszystkie prawa zastrzeżone.
+    © 2025 PhantomZone | Stworzone przez fanów Phasmophobii 👻
   </footer>
 
   <script>
-    // Funkcja przewijania do sekcji 'projekty' po kliknięciu przycisku
-    document.getElementById('scrollToProjectsBtn').addEventListener('click', function() {
-      document.getElementById('projects').scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
+    // Toggle menu
+    function toggleMenu() {
+      const menu = document.querySelector('.nav-menu');
+      const icon = document.querySelector('.menu-icon');
+      menu.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    // Show the selected section
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((section) => section.classList.remove('active'));
+
+      const activeSection = document.getElementById(sectionId);
+      activeSection.classList.add('active');
+      
+      // Close the menu after selection
+      toggleMenu();
+    }
   </script>
 </body>
 </html>
+
